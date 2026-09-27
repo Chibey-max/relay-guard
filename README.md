@@ -6,6 +6,10 @@ Relay Guard turns one sentence into a payment, and puts **SERV Reasoning** betwe
 
 > An AI that moves money should have to show its work before it signs.
 
+**Live app: [relay-guard-brown.vercel.app/app](https://relay-guard-brown.vercel.app/app)** (demo mode, no wallet or login needed)
+**Landing page: [relay-guard-brown.vercel.app](https://relay-guard-brown.vercel.app)**
+**Code: [github.com/Chibey-max/relay-guard](https://github.com/Chibey-max/relay-guard)**
+
 Built for the **OpenServ SERV Hackathon, Edition 01 (Open Track)**. Forked from [Relay](https://github.com/Chibey-max/relay), a live cross-chain payments app on Particle Universal Accounts, Magic and ZeroDev.
 
 ---
@@ -56,11 +60,11 @@ Built for the **OpenServ SERV Hackathon, Edition 01 (Open Track)**. Forked from 
 
 ## Tested
 
-Run against the dev server on 2026-09-27, with **live SERV Reasoning** (`SERV_API_KEY` set, model `gpt-5.4-mini`, served as `gpt-5.4-mini-2026-03-17`):
+Run on 2026-09-27 against the dev server and again against the deployed app at https://relay-guard-brown.vercel.app, with **live SERV Reasoning** (`SERV_API_KEY` set, model `gpt-5.4-mini`, served as `gpt-5.4-mini-2026-03-17`):
 
-- 6 of 6 verdict cases above returned the expected verdict. Every case reached SERV: `engine: "serv"` with a request id and token counts on each call, no fallback to the rule-based parser.
+- 6 of 6 verdict cases above returned the expected verdict, locally and in production. Every case reached SERV: `engine: "serv"` with a request id and token counts on each call, no fallback to the rule-based parser.
 - On the five transfers, SERV's own verdict matched the policy floor every time, so no case needed policy escalation. The escalation path is still enforced in code (the final verdict is the stricter of the two).
-- 5 of 5 execute-gate cases: no receipt → 403, REVIEW without ack → 403, REVIEW with ack → 200, amount edited after review → 403, BLOCK with ack → 403.
+- 5 of 5 execute-gate cases, locally and in production: no receipt → 403, REVIEW without ack → 403, REVIEW with ack → 200, amount edited after review → 403, BLOCK with ack → 403.
 - `npx tsc --noEmit --skipLibCheck` and `npm run build` pass.
 
 Latency and cost, measured over those runs: two SERV calls per transfer (PARSE then GUARD), roughly 6 to 13 seconds each and 13 to 26 seconds end to end, at about 650 to 990 prompt tokens and 40 to 110 completion tokens per call. A balance question costs one call, not two.
@@ -96,6 +100,8 @@ NEXT_PUBLIC_RELAY_MODE=demo npm run dev
 ```
 
 Open http://localhost:3000/app. Demo mode needs only `SERV_API_KEY`.
+
+Or skip all of that and open the deployed app: [https://relay-guard-brown.vercel.app/app](https://relay-guard-brown.vercel.app/app).
 
 ---
 
