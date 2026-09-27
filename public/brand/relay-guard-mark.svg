@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="Relay Guard">
+  <!--
+    Relay Guard mark.
+
+    One gate, three outcomes. The cream node at the centre is the point
+    where a payment intent is judged. The three nodes radiating from it
+    are the verdicts the guard can return, in the colours the app uses
+    for them: sage ALLOW, terracotta REVIEW, brick BLOCK. The quiet
+    outer circle is the threshold nothing crosses unreviewed.
+
+    Text is deliberately absent so the mark is font independent and
+    works as an avatar or favicon. The full lockup lives in
+    relay-guard-logo.png.
+  -->
+  <circle cx="60" cy="60" r="57" stroke="#F2F1EA" stroke-opacity="0.07" stroke-width="1.4"/>
+  <path d="M24 28 L60 60 M96 28 L60 60 M60 96 L60 60" stroke="#F2F1EA" stroke-opacity="0.22"
+        stroke-width="3" stroke-linecap="round"/>
+  <circle cx="24" cy="28" r="8.4" fill="#B8D9A8" fill-opacity="0.92"/>
+  <circle cx="96" cy="28" r="8.4" fill="#D2965A" fill-opacity="0.92"/>
+  <circle cx="60" cy="96" r="8.4" fill="#A8443A" fill-opacity="0.92"/>
+  <circle cx="60" cy="60" r="23.5" stroke="#F2F1EA" stroke-opacity="0.2" stroke-width="1.6"/>
+  <circle cx="60" cy="60" r="13" fill="#F2F1EA"/>
+</svg>
