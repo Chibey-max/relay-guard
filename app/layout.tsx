@@ -20,9 +20,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Relay: Money that moves the way you speak",
+  title: "Relay Guard: SERV decides if your money should move",
   description:
-    "Relay reads a sentence, unifies your balance across every chain, and sends: no gas, no bridging, no seed phrase. Powered by Particle Universal Accounts in EIP-7702 mode.",
+    "Relay Guard turns one sentence into a payment and puts SERV Reasoning between the sentence and the signature. Every request gets an ALLOW, REVIEW or BLOCK verdict with reasons you can check, and the server refuses to execute without a signed SERV receipt.",
 };
 
 export default function RootLayout({

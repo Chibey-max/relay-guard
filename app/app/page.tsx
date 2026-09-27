@@ -660,8 +660,12 @@ export default function Home() {
               />
               <circle cx="15" cy="15" r="3.4" fill="currentColor" />
             </svg>
-            <span className="font-display text-2xl font-semibold tracking-tight text-chalk sm:text-3xl">
-              Relay
+            {/* text-xl at the narrowest widths, not text-2xl: "Relay Guard"
+                is twice the glyph count of the old one-word mark, and the
+                header already had to be tuned to fit 375px. nowrap keeps it
+                on one line rather than breaking after "Relay". */}
+            <span className="whitespace-nowrap font-display text-xl font-semibold tracking-tight text-chalk sm:text-3xl">
+              Relay Guard
             </span>
           </Link>
           <div className="flex items-center gap-2 sm:gap-3">

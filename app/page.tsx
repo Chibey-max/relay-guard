@@ -414,8 +414,8 @@ export default function MarketingPage() {
                 />
                 <circle cx="15" cy="15" r="3.4" fill="currentColor" />
               </svg>
-              <span className="font-display text-lg font-semibold tracking-tight">
-                Relay
+              <span className="whitespace-nowrap font-display text-lg font-semibold tracking-tight">
+                Relay Guard
               </span>
             </div>
             <div className="hidden items-center gap-8 text-sm text-mkt-muted md:flex">
@@ -826,13 +826,13 @@ export default function MarketingPage() {
                     />
                     <circle cx="15" cy="15" r="3.4" fill="currentColor" />
                   </svg>
-                  <span className="font-display text-base font-semibold tracking-tight">
-                    Relay
+                  <span className="whitespace-nowrap font-display text-base font-semibold tracking-tight">
+                    Relay Guard
                   </span>
                 </div>
                 <p className="max-w-xs text-sm text-mkt-muted">
-                  Money that moves the way you speak. Real transfers, sponsored
-                  gas, checkable on-chain.
+                  Speak your money. SERV Reasoning decides if it should move.
+                  Real transfers, sponsored gas, checkable on-chain.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
@@ -880,7 +880,7 @@ export default function MarketingPage() {
             </div>
             <div className="flex flex-wrap items-center justify-between gap-3 border-t border-mkt-line pt-6 text-xs text-mkt-muted2">
               <span>
-                &copy; 2026 Relay. Sends are real, demo mode is always labeled.
+                &copy; 2026 Relay Guard. Sends are real, demo mode is always labeled.
               </span>
               <span className="font-mono">
                 Policy verified on Arbitrum Sepolia. Settlement proven on

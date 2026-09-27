@@ -245,8 +245,12 @@ function AgentScreen() {
             "radial-gradient(circle at 32% 28%, rgb(var(--mkt-sage-soft)) 0%, rgb(var(--mkt-sage)) 72%)",
         }}
       />
-      <h4 className="font-display text-lg font-medium text-mkt-ink">Relay</h4>
-      <div className="-mt-1 text-xs text-mkt-muted">your payment agent</div>
+      <h4 className="font-display text-lg font-medium text-mkt-ink">
+        Relay Guard
+      </h4>
+      <div className="-mt-1 text-xs text-mkt-muted">
+        your payment agent, reviewed by SERV
+      </div>
       <div className="mt-1 inline-flex items-center gap-1 rounded-full bg-mkt-sage-soft/35 px-2.5 py-1 text-[11px] font-medium text-mkt-sage">
         Verified on Arbitrum
       </div>
