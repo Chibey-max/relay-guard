@@ -53,7 +53,7 @@ const STRIP = [
   },
   {
     h: "One balance, any chain",
-    p: "Relay treats what you own as a single balance.",
+    p: "Relay Guard treats what you own as a single balance.",
   },
 ];
 
@@ -61,7 +61,7 @@ const STEPS = [
   {
     n: "01",
     h: "Speak",
-    p: "Type it the way you'd text a friend. Relay reads the intent, not a form.",
+    p: "Type it the way you'd text a friend. Relay Guard reads the intent, not a form.",
   },
   {
     n: "02",
@@ -78,7 +78,7 @@ const STEPS = [
 const FEATURE_CARDS = [
   {
     h: "No jargon, ever",
-    p: "Describe a payment in plain words. Relay handles the chain, the gas, and the routing behind it.",
+    p: "Describe a payment in plain words. Relay Guard handles the chain, the gas, and the routing behind it.",
   },
   {
     h: "Trust you can check",
@@ -546,7 +546,7 @@ export default function MarketingPage() {
                       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
                     >
                       Type a sentence, say &ldquo;send 5 USDC to
-                      0x2c9b…7fa4&rdquo;, and Relay unifies your balance, covers
+                      0x2c9b…7fa4&rdquo;, and Relay Guard unifies your balance, covers
                       the network fee, and sends. No chain picker, no gas quote,
                       no seed phrase.
                     </motion.p>
@@ -561,14 +561,6 @@ export default function MarketingPage() {
                     >
                       Open the app
                     </Link>
-                    <a
-                      href="https://youtu.be/Lsi5LygN5V0"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="border-b border-mkt-fixed-light/40 pb-0.5 text-sm text-mkt-fixed-light/80"
-                    >
-                      Watch the demo, 90 seconds
-                    </a>
                   </motion.div>
                 </motion.div>
               ) : (
@@ -587,7 +579,7 @@ export default function MarketingPage() {
                       style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
                     >
                       Type a sentence, say &ldquo;send 5 USDC to
-                      0x2c9b…7fa4&rdquo;, and Relay unifies your balance, covers
+                      0x2c9b…7fa4&rdquo;, and Relay Guard unifies your balance, covers
                       the network fee, and sends. No chain picker, no gas quote,
                       no seed phrase.
                     </p>
@@ -599,14 +591,6 @@ export default function MarketingPage() {
                     >
                       Open the app
                     </Link>
-                    <a
-                      href="https://youtu.be/Lsi5LygN5V0"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="border-b border-mkt-fixed-light/40 pb-0.5 text-sm text-mkt-fixed-light/80"
-                    >
-                      Watch the demo, 90 seconds
-                    </a>
                   </div>
                 </div>
               )}

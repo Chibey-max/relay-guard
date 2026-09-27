@@ -13,19 +13,19 @@ const QUOTES = [
   {
     say: "send 5 USDC to 0xd06e…5a91",
     result:
-      "Relay parses the address, unifies your balance, settles on Arbitrum",
+      "Relay Guard parses the address, unifies your balance, settles on Arbitrum",
   },
   {
     say: "pay 0x4a2f…9e21 20 USDC for lunch",
-    result: "Relay parses the address, sends, gas covered",
+    result: "Relay Guard parses the address, sends, gas covered",
   },
   {
     say: "move 50 USDC to 0x71c3…44b2",
-    result: "Relay confirms the funds are there and sends, gas covered",
+    result: "Relay Guard confirms the funds are there and sends, gas covered",
   },
   {
     say: "split rent, 300 USDC to 0x8f19…c73d",
-    result: "Relay parses the amount and recipient, confirms before sending",
+    result: "Relay Guard parses the amount and recipient, confirms before sending",
   },
 ];
 
@@ -80,8 +80,8 @@ export default function QuoteCarousel({ motionOn }: { motionOn: boolean }) {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="text-mkt-ink"
           >
-            <b className="font-semibold">{q.result.match(/^Relay \S+/)?.[0]}</b>{" "}
-            {q.result.replace(/^Relay \S+ /, "")}
+            <b className="font-semibold">{q.result.match(/^Relay Guard \S+/)?.[0]}</b>{" "}
+            {q.result.replace(/^Relay Guard \S+ /, "")}
           </motion.span>
         </AnimatePresence>
       </div>

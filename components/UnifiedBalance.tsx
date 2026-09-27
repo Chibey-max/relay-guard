@@ -105,7 +105,7 @@ export default function UnifiedBalance({
       )}
 
       <p className="mt-4 text-xs leading-relaxed text-mist">
-        Relay sees funds on every chain as one balance. You never bridge, never
+        Relay Guard sees funds on every chain as one balance. You never bridge, never
         switch networks, never pick where the money comes from.
       </p>
     </div>

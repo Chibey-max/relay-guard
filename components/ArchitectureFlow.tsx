@@ -117,7 +117,7 @@ export default function ArchitectureFlow({
 
     /**
      * Plays the reverse choreography: Arbitrum fades first (its incoming
-     * connector retracts with it), then ZeroDev, Particle UA, Magic, Groq,
+     * connector retracts with it), then ZeroDev, Particle UA, Magic, SERV,
      * and finally "You type". The connector feeding each node retracts
      * in the same step, so the rewind reads as one continuous unwind
      * rather than a cut back to idle.

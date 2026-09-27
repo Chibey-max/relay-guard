@@ -90,7 +90,7 @@ export default function PaymentReceipt({
       : {
           amount: STATIC_FALLBACK_AMOUNT,
           token: STATIC_FALLBACK_TOKEN,
-          recipientText: "Relay",
+          recipientText: "Relay Guard",
           hash: STATIC_FALLBACK.hash,
           href: STATIC_FALLBACK.href,
           isEip7702: true,
@@ -98,8 +98,8 @@ export default function PaymentReceipt({
 
   const quote = buildQuote(quoteData);
   const who = sessionLatest
-    ? `Relay · sent to ${quoteData.recipientText}`
-    : "Relay · Arbitrum One mainnet";
+    ? `Relay Guard · sent to ${quoteData.recipientText}`
+    : "Relay Guard · Arbitrum One mainnet";
 
   const ref = useRef<HTMLDivElement>(null);
   const [stamped, setStamped] = useState(false);

@@ -7,11 +7,11 @@ import { motion, AnimatePresence } from "framer-motion";
 const FAQS = [
   {
     q: "What exactly happens when I hit send?",
-    a: "Relay reads your sentence, works out who and how much, finds where your funds already sit, and moves them. No chain picker, no gas step for you to fill in.",
+    a: "Relay Guard reads your sentence, works out who and how much, finds where your funds already sit, and moves them. No chain picker, no gas step for you to fill in.",
   },
   {
     q: "Where does my money actually live?",
-    a: "In a wallet only you control, created the moment you log in with your email. Relay never holds your funds.",
+    a: "In a wallet only you control, created the moment you log in with your email. Relay Guard never holds your funds.",
   },
   {
     q: "Do I need a seed phrase?",
@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: "What if my funds aren't already on Arbitrum?",
-    a: "Today, Relay settles from funds already unified onto Arbitrum. Sourcing directly from other chains in the same send is the next thing being built, nothing here claims that's live yet.",
+    a: "Today, Relay Guard settles from funds already unified onto Arbitrum. Sourcing directly from other chains in the same send is the next thing being built, nothing here claims that's live yet.",
   },
 ];
 

@@ -1,8 +1,8 @@
 {
-  "name": "relay",
+  "name": "relay-guard",
   "version": "0.1.0",
   "private": true,
-  "description": "Speak your money. Relay turns one sentence into a cross-chain payment, powered by Particle Universal Accounts in EIP-7702 mode, Magic embedded wallets, and ZeroDev gas sponsorship on Arbitrum.",
+  "description": "Speak your money. SERV Reasoning decides if it should move. Relay Guard returns an ALLOW / REVIEW / BLOCK verdict with checkable reasons between a plain-English payment intent and the wallet signature, and refuses to execute without a signed receipt.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

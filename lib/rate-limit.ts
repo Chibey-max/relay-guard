@@ -1,7 +1,7 @@
 // lib/rate-limit.ts
 /**
  * Minimal in-memory rate limiter. Blunts scripted abuse of routes that cost
- * real money (ZeroDev sponsored gas, Groq calls) on a single-instance
+ * real money (ZeroDev sponsored gas, SERV Reasoning calls) on a single-instance
  * deployment. Each server instance keeps its own counters, so this is not a
  * substitute for a distributed limiter (Redis/Upstash) behind a multi-
  * instance deployment, but it closes the "hit it in a loop" hole cheaply.

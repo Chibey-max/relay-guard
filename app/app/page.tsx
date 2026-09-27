@@ -634,7 +634,7 @@ export default function Home() {
             {/* text-xl at the narrowest widths, not text-2xl: "Relay Guard"
                 is twice the glyph count of the old one-word mark, and the
                 header already had to be tuned to fit 375px. nowrap keeps it
-                on one line rather than breaking after "Relay". */}
+                on one line rather than breaking after "Relay Guard". */}
             <span className="whitespace-nowrap font-display text-xl font-semibold tracking-tight text-chalk sm:text-3xl">
               Relay Guard
             </span>
@@ -1113,7 +1113,7 @@ export default function Home() {
                 Project
               </p>
               <a
-                href="https://github.com/Chibey-max/relay"
+                href="https://github.com/Chibey-max/relay-guard"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1 font-mono text-[10px] uppercase tracking-wider text-mist hover:text-chalk"

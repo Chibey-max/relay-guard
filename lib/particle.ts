@@ -277,7 +277,7 @@ export async function sendUnifiedTransfer(
     /**
      * Particle's backend rejects a receiver/token address with any stray
      * whitespace as "Invalid parameters" (JSON-RPC -32602). Trim right
-     * before the call as a last line of defense, even though lib/groq.ts
+     * before the call as a last line of defense, even though lib/serv.ts
      * already trims at the source.
      */
     const tokenAddress = params.tokenAddress.trim();

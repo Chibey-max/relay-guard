@@ -282,7 +282,7 @@ function AgentScreen() {
 
       <div className="mt-1.5 flex w-full items-center gap-2.5 rounded-xl bg-mkt-sage px-3 py-2 text-left">
         <span className="font-medium text-[13px] text-white">
-          Send with Relay
+          Send with Relay Guard
         </span>
       </div>
       <div className="mt-1.5 flex w-full items-center gap-2.5 rounded-xl border border-mkt-line bg-mkt-cream px-3 py-2 text-left">
@@ -326,7 +326,7 @@ function ComposeScreen({
           aria-hidden="true"
         />
       </div>
-      <div className="mb-1 text-xs text-mkt-muted2">Relay reads it as</div>
+      <div className="mb-1 text-xs text-mkt-muted2">Relay Guard reads it as</div>
       {rows.map((row, i) => (
         <div
           key={row.label}
