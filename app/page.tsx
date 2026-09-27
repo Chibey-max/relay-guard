@@ -41,6 +41,14 @@ import "./marketing.css";
 const SECTION_X = "px-section-px sm:px-section-px-sm lg:px-section-px-lg";
 const SECTION_Y = "py-section-py sm:py-section-py-sm lg:py-section-py-lg";
 
+/* The three verdicts, in the same colours the app's GuardPanel uses for
+   them: sage, amber, brick. */
+const VERDICTS = [
+  { term: "ALLOW", gloss: "Clear. It sends.", dot: "#B8D9A8" },
+  { term: "REVIEW", gloss: "Sendable, once a human says so.", dot: "#D2965A" },
+  { term: "BLOCK", gloss: "Never reaches the signature.", dot: "#A8443A" },
+];
+
 const STRIP = [
   { h: "Real transfers", p: "Live on Arbitrum mainnet, not a simulation." },
   {
@@ -627,6 +635,58 @@ export default function MarketingPage() {
             </div>
           </header>
         </div>
+
+        {/* Full-bleed dark band, directly under the hero. The landing page
+            is light by default and has a light/dark toggle, so this is a
+            self-contained dark block rather than a themed one: it reads as
+            a deliberate editorial band either way, and the artwork it
+            carries is dark in both. Same file the /app backdrop uses.
+
+            It also closes a real gap. Before this, the landing page never
+            said what Relay Guard does, so a visitor met the payments pitch
+            and no mention of the verdict layer until they opened the app. */}
+        <section
+          aria-labelledby="guard-band-heading"
+          className="relative isolate overflow-hidden bg-[#0B0B0A] bg-cover bg-center"
+          style={{ backgroundImage: "url(/guard-bg.svg)" }}
+        >
+          <div className={`mx-auto max-w-6xl ${SECTION_X} py-16 sm:py-20`}>
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#9B9A8E]">
+              Relay Guard
+            </p>
+            <h2
+              id="guard-band-heading"
+              className="mt-3 max-w-xl font-display text-2xl font-medium leading-snug text-[#F2F1EA] sm:text-3xl"
+            >
+              Every payment crosses one threshold before it is signed.
+            </h2>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#9B9A8E]">
+              SERV Reasoning parses the sentence, checks it against
+              deterministic policy, and returns a verdict with reasons you can
+              check. The model can escalate a verdict, never unlock one.
+            </p>
+            <dl className="mt-9 flex flex-wrap gap-x-12 gap-y-5">
+              {VERDICTS.map((v) => (
+                <div key={v.term} className="flex items-start gap-2.5">
+                  <span
+                    aria-hidden="true"
+                    className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
+                    style={{ backgroundColor: v.dot }}
+                  />
+                  <div>
+                    <dt
+                      className="font-mono text-xs font-medium tracking-wide"
+                      style={{ color: v.dot }}
+                    >
+                      {v.term}
+                    </dt>
+                    <dd className="mt-0.5 text-sm text-[#9B9A8E]">{v.gloss}</dd>
+                  </div>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
 
         <TxTicker />
 

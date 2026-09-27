@@ -574,7 +574,7 @@ export default function Home() {
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 -z-10 bg-black bg-cover bg-center"
-        style={{ backgroundImage: "url(/app-bg.svg)" }}
+        style={{ backgroundImage: "url(/guard-bg.svg)" }}
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 pb-16 lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
