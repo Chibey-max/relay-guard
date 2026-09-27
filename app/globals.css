@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens — dark is default, .light overrides on the same element
+   (or any ancestor) via CSS variable cascade. No @media dark-mode query
+   needed since the app drives this explicitly via a toggle. */
+/* Values are space-separated R G B triplets (not hex) so Tailwind's
+   opacity modifiers (e.g. border-line/40) can compose them as
+   rgb(var(--c-x) / <alpha-value>) — see tailwind.config.ts. A plain hex
+   custom property can't have an alpha channel spliced in by a utility
+   class, so every /NN-suffixed color class was silently falling back to
+   Tailwind's default gray instead of our theme color before this. */
+:root {
+  --c-ink: 11 11 10;
+  --c-slate: 19 19 17;
+  --c-slate2: 25 25 22;
+  --c-line: 40 40 31;
+  --c-line2: 56 56 44;
+  --c-chalk: 242 241 234;
+  --c-mist: 155 154 142;
+  --c-dim: 92 92 82;
+  --c-check: 184 217 168;
+  /* Warm accent + a second, deeper sage-family tone used only by the
+     ambient background gradient's three overlapping blobs. */
+  --c-amber: 210 150 90;
+  --c-check-soft: 46 74 37;
+  color-scheme: dark;
+}
+
+.light {
+  --c-ink: 250 249 244;
+  --c-slate: 255 255 255;
+  --c-slate2: 241 239 230;
+  --c-line: 226 223 209;
+  --c-line2: 207 203 184;
+  --c-chalk: 21 21 18;
+  --c-mist: 102 101 90;
+  --c-dim: 156 154 140;
+  --c-check: 61 107 46;
+  --c-amber: 224 168 122;
+  --c-check-soft: 184 217 168;
+  color-scheme: light;
+}
+
+html,
+body {
+  background: rgb(var(--c-ink));
+  color: rgb(var(--c-chalk));
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* View Transition theme switch — circle wipe from the toggle button.
+   Reset the default cross-fade so our JS clip-path animation takes over. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Motion is controlled EXPLICITLY by the in-app toggle (which itself
+   defaults from the OS's prefers-reduced-motion on first load). We do NOT
+   use a blanket @media query here — that would force-kill every animation
+   at the browser level and make the in-app toggle unable to override it.
+   The .motion-off class is the single source of truth. */
+.motion-off *,
+.motion-off *::before,
+.motion-off *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+.ticker-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 60px,
+    black calc(100% - 60px),
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 60px,
+    black calc(100% - 60px),
+    transparent
+  );
+}

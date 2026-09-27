@@ -1,0 +1,86 @@
+/* app/marketing.css
+   Scoped design tokens for the marketing page ONLY. Imported exclusively by
+   app/page.tsx — never by the root layout — so these never leak into /app
+   or /demo's cascade. Prefixed (--mkt-*, not --c-*) so a copy-pasted
+   Tailwind utility from the app's design system (e.g. text-ink, bg-chalk)
+   can never silently pick these up, and scoped under .mkt so they never
+   apply outside this page's own wrapper, even though the prefix alone would
+   already prevent a value collision with the app's --c-ink etc. */
+
+.mkt {
+  --mkt-cream: 250 249 244;
+  --mkt-card: 255 255 255;
+  --mkt-line: 226 223 209;
+  --mkt-ink: 21 21 18;
+  --mkt-muted: 102 101 90;
+  --mkt-muted2: 156 154 140;
+  --mkt-sage: 61 107 46;
+  --mkt-sage-soft: 184 217 168;
+  /* Warm accent used only by the ambient background gradient — pairs
+     with --mkt-sage for the two-tone sage/amber wash. */
+  --mkt-amber: 224 168 122;
+  /* Fixed tokens: intentionally do NOT flip with .mkt.light / .mkt (dark
+     default) — the trust panel is always a dark, hardware-black panel
+     regardless of page theme. */
+  --mkt-fixed-dark: 21 21 18;
+  --mkt-fixed-light: 250 249 244;
+  /* Phone frame body + outer ring, for both phone mockups. The phone
+     stays a dark device in light mode too (not a pale cream slab) — the
+     ring color is intentionally the SAME value as dark mode's below
+     (not white), so the ring itself doesn't change between themes, only
+     the surrounding page does. */
+  --mkt-phone-frame: 60 61 53;
+  --mkt-phone-ring: 112 111 100;
+
+  background: rgb(var(--mkt-cream));
+  color: rgb(var(--mkt-ink));
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.mkt.dark {
+  --mkt-cream: 17 18 16;
+  --mkt-card: 37 38 34;
+  --mkt-line: 60 61 53;
+  --mkt-ink: 240 239 232;
+  --mkt-muted: 168 166 153;
+  --mkt-muted2: 112 111 100;
+  --mkt-sage: 145 202 122;
+  --mkt-sage-soft: 46 74 37;
+  --mkt-amber: 210 150 90;
+  --mkt-phone-frame: 60 61 53;
+  --mkt-phone-ring: 112 111 100;
+}
+
+.mkt .mkt-accent {
+  font-style: italic;
+  color: rgb(var(--mkt-sage));
+}
+
+/* Ticker marquee mask — mirrors .ticker-mask in globals.css, scoped here so
+   marketing.css stays self-contained. */
+.mkt .mkt-ticker-mask {
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Trust panel now uses the same --mkt-card token as every other card on
+   the page (see TrustPanel.tsx), so it gets the same contrast against
+   --mkt-cream in both themes automatically — no special-case border
+   needed here anymore. */
+.mkt .mkt-trust-panel {
+  border: 1px solid rgb(var(--mkt-line));
+}
