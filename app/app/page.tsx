@@ -10,8 +10,6 @@
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import ParticleField from "../../components/ParticleField";
-import AmbientGradient from "../../components/AmbientGradient";
 import NavMenu from "../../components/NavMenu";
 import IntegrationStatus from "../../components/IntegrationStatus";
 import UnifiedBalance from "../../components/UnifiedBalance";
@@ -128,15 +126,11 @@ export default function Home() {
     null
   );
   const [motionOn, setMotionOn] = useState(true);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [ownerAddress, setOwnerAddress] = useState<string | null>(null);
 
-  // On mount, read localStorage and sync: avoids SSR/hydration mismatch
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("relayTheme") as
-      "dark" | "light" | null;
-    if (savedTheme) setTheme(savedTheme);
-  }, []);
+  /* /app is dark only: the fixed background art is dark, so a light
+     theme here would put dark cards on dark art. The landing page keeps
+     its light/dark toggle. */
 
   function toggleMode() {
     const next = relayMode === "demo" ? "live" : "demo";
@@ -199,48 +193,12 @@ export default function Home() {
   }, []);
 
   const [copied, setCopied] = useState<"address" | "deposit" | null>(null);
-  const themeToggleRef = useRef<HTMLButtonElement>(null);
 
   function copyToClipboard(text: string, key: "address" | "deposit") {
     navigator.clipboard.writeText(text).then(() => {
       setCopied(key);
       setTimeout(() => setCopied(null), 2000);
     });
-  }
-
-  async function handleThemeToggle() {
-    const next = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("relayTheme", next);
-    // Use View Transitions API for the circle-wipe effect if available
-    if (!document.startViewTransition || !themeToggleRef.current) {
-      setTheme(next);
-      return;
-    }
-    const btn = themeToggleRef.current;
-    const { top, left, width, height } = btn.getBoundingClientRect();
-    const cx = left + width / 2;
-    const cy = top + height / 2;
-    const endRadius = Math.hypot(
-      Math.max(cx, window.innerWidth - cx),
-      Math.max(cy, window.innerHeight - cy)
-    );
-    const transition = document.startViewTransition(() => {
-      setTheme(next);
-    });
-    await transition.ready;
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${cx}px ${cy}px)`,
-          `circle(${endRadius}px at ${cx}px ${cy}px)`,
-        ],
-      },
-      {
-        duration: 420,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      }
-    );
   }
 
   const tickerReveal = useReveal<HTMLDivElement>();
@@ -601,14 +559,23 @@ export default function Home() {
      * transition otherwise.
      */
     <main
-      className={`relative overflow-hidden bg-ink transition-colors duration-300 ${motionOn ? "animate-fade-in" : "motion-off"} ${theme === "light" ? "light" : ""}`}
+      className={`relative overflow-hidden ${motionOn ? "animate-fade-in" : "motion-off"}`}
     >
-      <AmbientGradient
-        sageVar="--c-check"
-        sageSoftVar="--c-check-soft"
-        amberVar="--c-amber"
+      {/* Fixed full-viewport art behind everything on /app. This replaces
+          the old AmbientGradient + ParticleField pair: those were canvas
+          effects that animated per frame, this is one cached SVG.
+
+          <main> deliberately no longer sets bg-ink. A negative z-index
+          child paints behind its parent's own background when the parent
+          is not a stacking context (position: relative with z-index auto
+          is not one), so an opaque background on <main> would have hidden
+          this layer entirely. The bg-black here is what guarantees an
+          opaque backdrop instead. */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 bg-black bg-cover bg-center"
+        style={{ backgroundImage: "url(/app-bg.svg)" }}
       />
-      <ParticleField paused={!motionOn} />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 pb-16 lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
         {/* Frame rules: only show above 2xl, where the centered column
@@ -708,22 +675,6 @@ export default function Home() {
                 className="text-[16px] align-middle"
               />
             </button>
-            <button
-              ref={themeToggleRef}
-              onClick={handleThemeToggle}
-              title={
-                theme === "dark"
-                  ? "Switch to light mode"
-                  : "Switch to dark mode"
-              }
-              aria-label="Toggle theme"
-              className="flex shrink-0 items-center justify-center rounded-full border border-line2 bg-line2/20 p-1.5 text-mist hover:text-chalk"
-            >
-              <Icon
-                name={theme === "dark" ? "dark_mode" : "light_mode"}
-                className="text-[18px] align-middle"
-              />
-            </button>
           </div>
         </header>
 
@@ -736,7 +687,7 @@ export default function Home() {
         <div ref={mainSectionRef} className="pt-10">
           <section className="mx-auto w-full max-w-xl">
             {phase === "login" && (
-              <div className="mb-6 rounded-2xl border border-line bg-slate p-6">
+              <div className="mb-6 rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-6">
                 <p className="mb-1 font-mono text-[10px] uppercase tracking-widest text-dim">
                   Step 1 of 2
                 </p>
@@ -755,7 +706,7 @@ export default function Home() {
               <div>
                 {/* Live mode: always show wallet section, address if known, connect prompt if not */}
                 {relayMode === "live" && !ownerAddress && (
-                  <div className="mb-6 rounded-2xl border border-line bg-slate p-5">
+                  <div className="mb-6 rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-5">
                     <p className="mb-1 font-mono text-[9px] uppercase tracking-widest text-dim">
                       Your wallet
                     </p>
@@ -767,7 +718,7 @@ export default function Home() {
                 )}
 
                 {ownerAddress && (
-                  <div className="mb-6 rounded-2xl border border-check/30 bg-slate p-5 space-y-4">
+                  <div className="mb-6 rounded-2xl border border-check/30 bg-slate/80 backdrop-blur-md p-5 space-y-4">
                     <div className="flex items-center gap-2">
                       <span className="h-2 w-2 rounded-full bg-check animate-pulse" />
                       <p className="font-mono text-[10px] uppercase tracking-widest text-check">
@@ -868,7 +819,7 @@ export default function Home() {
                     onChange={(e) => setText(e.target.value)}
                     placeholder={EXAMPLE}
                     rows={3}
-                    className="w-full resize-none rounded-xl border border-line bg-slate p-4 font-mono text-sm text-chalk placeholder:text-dim focus:border-line2 focus:outline-none"
+                    className="w-full resize-none rounded-xl border border-line bg-slate/80 backdrop-blur-md p-4 font-mono text-sm text-chalk placeholder:text-dim focus:border-line2 focus:outline-none"
                   />
                   <div className="mt-3 flex items-center justify-between">
                     <button
@@ -909,7 +860,7 @@ export default function Home() {
                   />
                 )}
 
-                <div className="rounded-2xl border border-line bg-slate p-6">
+                <div className="rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-6">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-dim">
                     Ready to send
                   </span>
@@ -997,7 +948,7 @@ export default function Home() {
                 )}
 
                 {phase === "done" && !result?.ok && !error && (
-                  <div className="rounded-2xl border border-line2 bg-slate p-6">
+                  <div className="rounded-2xl border border-line2 bg-slate/80 backdrop-blur-md p-6">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-mist">
                       Didn&apos;t go through
                     </span>
@@ -1015,7 +966,7 @@ export default function Home() {
                 )}
 
                 {phase === "done" && result?.ok && (
-                  <div className="animate-converge rounded-2xl border border-check/40 bg-slate p-6">
+                  <div className="animate-converge rounded-2xl border border-check/40 bg-slate/80 backdrop-blur-md p-6">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-check">
                       Payment sent
                     </span>
@@ -1073,7 +1024,7 @@ export default function Home() {
                 )}
 
                 {phase === "done" && error && (
-                  <div className="rounded-2xl border border-line2 bg-slate p-6">
+                  <div className="rounded-2xl border border-line2 bg-slate/80 backdrop-blur-md p-6">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-mist">
                       Didn&apos;t go through
                     </span>

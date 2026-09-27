@@ -44,7 +44,7 @@ export default function UnifiedBalance({
   const visibleChains = showAll ? balance.perChain : nonZero;
 
   return (
-    <div className="rounded-2xl border border-line bg-slate p-6 transition-colors">
+    <div className="rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-6 transition-colors">
       <div className="mb-3 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-dim">
           Your balance · unified

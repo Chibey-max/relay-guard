@@ -127,7 +127,7 @@ export default function PaymentReceipt({
   return (
     <div
       ref={ref}
-      className="max-w-lg rounded-2xl border border-line bg-slate p-6 transition-all hover:-translate-y-0.5 hover:border-line2"
+      className="max-w-lg rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-6 transition-all hover:-translate-y-0.5 hover:border-line2"
     >
       <div className="mb-4 flex items-center justify-between">
         <span className="font-mono text-[10px] uppercase tracking-widest text-dim">

@@ -50,7 +50,7 @@ export default function GuardPanel({
   const servLive = trace.some((t) => t.engine === "serv" && !t.error);
 
   return (
-    <div className={`rounded-2xl border ${tone.ring} bg-slate p-6`}>
+    <div className={`rounded-2xl border ${tone.ring} bg-slate/80 backdrop-blur-md p-6`}>
       <div className="flex items-center justify-between gap-3">
         <span className="font-mono text-[10px] uppercase tracking-widest text-dim">
           Relay Guard · SERV Reasoning

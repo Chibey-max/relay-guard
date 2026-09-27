@@ -143,7 +143,7 @@ export default function MagicLogin({ onLogin }: Props) {
           onChange={(e) => setEmail(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleLogin()}
           placeholder="you@example.com"
-          className="w-full rounded-xl border border-line bg-slate px-4 py-3 font-mono text-sm text-chalk placeholder:text-dim focus:border-line2 focus:outline-none"
+          className="w-full rounded-xl border border-line bg-slate/80 backdrop-blur-md px-4 py-3 font-mono text-sm text-chalk placeholder:text-dim focus:border-line2 focus:outline-none"
         />
       </div>
 

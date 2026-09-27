@@ -31,7 +31,7 @@ export default function ExecutionSteps({
   result?: ExecutionResult | null;
 }) {
   return (
-    <div className="rounded-2xl border border-line bg-slate p-6 transition-colors">
+    <div className="rounded-2xl border border-line bg-slate/80 backdrop-blur-md p-6 transition-colors">
       <span className="mb-4 block font-mono text-[10px] uppercase tracking-widest text-dim">
         Executing
       </span>
@@ -67,7 +67,7 @@ export default function ExecutionSteps({
             {result.sourcedFrom.map((s, i) => (
               <span
                 key={i}
-                className="rounded border border-line bg-slate px-2 py-0.5 font-mono text-[10px] text-chalk"
+                className="rounded border border-line bg-slate/80 backdrop-blur-md px-2 py-0.5 font-mono text-[10px] text-chalk"
               >
                 {s.chain}: {s.amount}
               </span>
