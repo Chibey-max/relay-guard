@@ -19,6 +19,7 @@ import TransactionTicker, {
 } from "../../components/TransactionTicker";
 import PaymentReceipt from "../../components/PaymentReceipt";
 import Icon from "../../components/Icon";
+import Logo from "../../components/Logo";
 import { RELAY_MODE, RELAY_POLICY_ADDRESS, EXPLORER } from "../../lib/config";
 import { useReveal } from "../../lib/useReveal";
 import {
@@ -601,36 +602,7 @@ export default function Home() {
 
         <header className="flex items-center justify-between border-b border-line py-5">
           <Link href="/" className="flex items-center gap-3">
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 30 30"
-              fill="none"
-              className="shrink-0 text-chalk"
-            >
-              <circle cx="6" cy="7" r="2.2" fill="currentColor" opacity="0.5" />
-              <circle
-                cx="24"
-                cy="7"
-                r="2.2"
-                fill="currentColor"
-                opacity="0.5"
-              />
-              <circle
-                cx="15"
-                cy="24"
-                r="2.2"
-                fill="currentColor"
-                opacity="0.5"
-              />
-              <path
-                d="M6 7 L15 15 M24 7 L15 15 M15 24 L15 15"
-                stroke="currentColor"
-                strokeWidth="1"
-                opacity="0.3"
-              />
-              <circle cx="15" cy="15" r="3.4" fill="currentColor" />
-            </svg>
+            <Logo size={28} className="shrink-0" />
             {/* text-xl at the narrowest widths, not text-2xl: "Relay Guard"
                 is twice the glyph count of the old one-word mark, and the
                 header already had to be tuned to fit 375px. nowrap keeps it

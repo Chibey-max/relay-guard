@@ -28,6 +28,7 @@ import ParticleField from "../components/ParticleField";
 import AmbientGradient from "../components/AmbientGradient";
 import NavMenu from "../components/NavMenu";
 import Icon from "../components/Icon";
+import Logo from "../components/Logo";
 import PhoneMock from "../components/marketing/PhoneMock";
 import HeroVideo from "../components/marketing/HeroVideo";
 import TxTicker from "../components/marketing/TxTicker";
@@ -377,43 +378,7 @@ export default function MarketingPage() {
              * consistent identity across both pages.
              */}
             <div className="flex items-center gap-2 text-mkt-ink">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 30 30"
-                fill="none"
-                className="shrink-0"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="6"
-                  cy="7"
-                  r="2.2"
-                  fill="currentColor"
-                  opacity="0.5"
-                />
-                <circle
-                  cx="24"
-                  cy="7"
-                  r="2.2"
-                  fill="currentColor"
-                  opacity="0.5"
-                />
-                <circle
-                  cx="15"
-                  cy="24"
-                  r="2.2"
-                  fill="currentColor"
-                  opacity="0.5"
-                />
-                <path
-                  d="M6 7 L15 15 M24 7 L15 15 M15 24 L15 15"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                  opacity="0.3"
-                />
-                <circle cx="15" cy="15" r="3.4" fill="currentColor" />
-              </svg>
+              <Logo size={22} className="shrink-0" />
               <span className="whitespace-nowrap font-display text-lg font-semibold tracking-tight">
                 Relay Guard
               </span>
@@ -798,43 +763,7 @@ export default function MarketingPage() {
             <div className="grid gap-8 sm:grid-cols-4">
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2 text-mkt-ink">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    className="shrink-0"
-                    aria-hidden="true"
-                  >
-                    <circle
-                      cx="6"
-                      cy="7"
-                      r="2.2"
-                      fill="currentColor"
-                      opacity="0.5"
-                    />
-                    <circle
-                      cx="24"
-                      cy="7"
-                      r="2.2"
-                      fill="currentColor"
-                      opacity="0.5"
-                    />
-                    <circle
-                      cx="15"
-                      cy="24"
-                      r="2.2"
-                      fill="currentColor"
-                      opacity="0.5"
-                    />
-                    <path
-                      d="M6 7 L15 15 M24 7 L15 15 M15 24 L15 15"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      opacity="0.3"
-                    />
-                    <circle cx="15" cy="15" r="3.4" fill="currentColor" />
-                  </svg>
+                  <Logo size={20} className="shrink-0" />
                   <span className="whitespace-nowrap font-display text-base font-semibold tracking-tight">
                     Relay Guard
                   </span>
