@@ -569,12 +569,16 @@ export default function Home() {
           child paints behind its parent's own background when the parent
           is not a stacking context (position: relative with z-index auto
           is not one), so an opaque background on <main> would have hidden
-          this layer entirely. The bg-black here is what guarantees an
-          opaque backdrop instead. */}
+          this layer entirely. The backgroundColor here is what guarantees
+          an opaque base while the SVG loads and wherever it does not
+          cover. */}
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-black bg-cover bg-center"
-        style={{ backgroundImage: "url(/guard-bg.svg)" }}
+        className="pointer-events-none fixed inset-0 -z-10 bg-cover bg-center"
+        style={{
+          backgroundImage: "url(/app-bg.svg)",
+          backgroundColor: "#070B14",
+        }}
       />
 
       <div className="relative z-10 mx-auto max-w-4xl px-6 pb-16 lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl">
